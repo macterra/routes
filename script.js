@@ -19,6 +19,13 @@ scotchApp.config(function($routeProvider) {
             controller  : 'projectsController'
         })
         
+
+        // route for the projects page
+        .when('/report/:projectId', {
+            templateUrl : 'pages/report.html',
+            controller  : 'reportController'
+        })
+        
         // route for the about page
         .when('/about', {
             templateUrl : 'pages/about.html',
@@ -40,6 +47,24 @@ scotchApp.controller('mainController', function($scope) {
 
 scotchApp.controller('projectsController', function($scope) {
     $scope.message = 'Project List';
+    
+    $scope.projects = 
+    [
+        { "id": 1, "title": "project 1" },
+        { "id": 2, "title": "project 2" },
+        { "id": 3, "title": "project 3" },
+        { "id": 4, "title": "project 4" },
+    ];
+    
+    console.log($scope);
+});
+
+scotchApp.controller('reportController', function($scope, $routeParams) {
+    
+    console.log('route params');
+    console.log($routeParams);
+    
+    $scope.message = 'project report for id=' + $routeParams.projectId;
 });
 
 scotchApp.controller('aboutController', function($scope) {
